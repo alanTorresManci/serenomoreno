@@ -12,6 +12,7 @@ class PlansTableSeeder extends Seeder
     public function run()
     {
         //
+        DB::table('plans')->truncate();
         DB::table('plans')->insert([
             'name' => 'Principiante',
             'price' => '399',

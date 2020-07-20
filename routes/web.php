@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index')->name('home');
 
 Auth::routes();
 
@@ -24,6 +22,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('clients', 'Admin\ClientsController');
         Route::resource('plans', 'Admin\PlansController');
         Route::resource('users', 'Admin\UsersController');
+        Route::resource('questions', 'Admin\QuestionsController');
+        Route::resource('texts', 'Admin\TextsController');
     });
     Route::group(['middleware' => ['client']], function() {
 
