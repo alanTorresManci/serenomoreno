@@ -150,6 +150,16 @@
                             <i class="fa fa-question"></i> <span>Preguntas Frecuentes</span>
                         </a>
                     </li>
+                    <li class="{{ $section == "texts" ? "active" : "" }}">
+                        <a href="{{ route('texts.index') }}">
+                            <i class="fa fa-language"></i> <span>Textos</span>
+                        </a>
+                    </li>
+                    <li class="{{ $section == "products" ? "active" : "" }}">
+                        <a href="{{ route('products.index') }}">
+                            <i class="fa fa-at"></i> <span>Conócenos</span>
+                        </a>
+                    </li>
 
 			        <!-- begin sidebar minify button -->
 					<li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>

@@ -1,55 +1,7 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <title>Sereno Moreno - Café</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-
-    <link rel="stylesheet" href="{{ asset('front_css/open-iconic-bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('front_css/animate.css') }}">
-
-    <link rel="stylesheet" href="{{ asset('front_css/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('front_css/owl.theme.default.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('front_css/magnific-popup.css') }}">
-
-    <link rel="stylesheet" href="{{ asset('front_css/aos.css') }}">
-
-    <link rel="stylesheet" href="{{ asset('front_css/ionicons.min.css') }}">
-
-    <link rel="stylesheet" href="{{ asset('front_css/bootstrap-datepicker.css') }}">
-    <link rel="stylesheet" href="{{ asset('front_css/jquery.timepicker.css') }}">
-
-
-    <link rel="stylesheet" href="{{ asset('front_css/flaticon.css') }}">
-    <link rel="stylesheet" href="{{ asset('front_css/icomoon.css') }}">
-    <link rel="stylesheet" href="{{ asset('front_css/style.css') }}">
-</head>
-<body>
-
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-        <div class="container">
-            <a class="navbar-brand navbar-dark" href="{{ route('home') }}">SERENO MORENO</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="oi oi-menu"></span> Menu
-            </button>
-
-            <div class="collapse navbar-collapse" id="ftco-nav">
-                <ul class="navbar-nav ml-auto">
-                    {{-- <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-                    <li class="nav-item"><a href="speakers.html" class="nav-link">Speakers</a></li>
-                    <li class="nav-item"><a href="schedule.html" class="nav-link">Schedule</a></li>
-                    <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li> --}}
-                    <li class="nav-item cta mr-md-2"><a href="#" class="nav-link">Unirse</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <!-- END nav -->
-
+@extends('template')
+    @section('content')
+    {{-- <a onclick="topFunction()" id="myBtn" title="Go to top">Top</button> --}}
+    <a href="https://wa.link/vvc3lj" id="myBtn" target="_blank"><span class="icon icon-whatsapp whats"></span></a>
     {{-- Header Inicial --}}
     <div class="hero-wrap js-fullheight" style="background-image: url('front_images/logo_header.png');" data-stellar-background-ratio="0.5">
         <div class="overlay"></div>
@@ -78,13 +30,13 @@
                     <div class="row justify-content-start pb-3">
                         <div class="col-md-12 heading-section ftco-animate">
                             {{-- <span class="subheading">Fun Facts</span> --}}
-                            <h2 class="mb-4"><span>Nosotros</span></h2>
+                            <h2 class="mb-4"><span>{!! $us->title !!}</span></h2>
                             <p>{!! nl2br($us->text) !!}</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 d-flex">
-                    <div class="img d-flex align-self-stretch" style="background-image:url({{ asset(config('constants.base_image_path').$us->image) }});"></div>
+                    <div class="img d-flex align-self-stretch" style="background-image:url({{ Storage::url(config('constants.base_image_path').$us->image) }});"></div>
                 </div>
             </div>
         </div>
@@ -96,13 +48,13 @@
         <div class="container">
             <div class="row d-flex">
                 <div class="col-md-6 d-flex">
-                    <div class="img d-flex align-self-stretch" style="background-image:url({{ asset(config('constants.base_image_path').$month->image) }});"></div>
+                    <div class="img d-flex align-self-stretch" style="background-image:url({{ Storage::url(config('constants.base_image_path').$month->image) }});"></div>
                 </div>
                 <div class="col-md-6 pl-md-5 py-5">
                     <div class="row justify-content-start pb-3">
                         <div class="col-md-12 heading-section ftco-animate">
                             {{-- <span class="subheading">Fun Facts</span> --}}
-                            <h2 class="mb-4"><span>Café</span> del mes</h2>
+                            <h2 class="mb-4"><span>{!! $month->title !!}</span></h2>
                             <p>{!! nl2br($month->text) !!}</p>
                         </div>
                     </div>
@@ -113,7 +65,7 @@
     {{-- Fin Café del mes --}}
 
     {{-- Planes --}}
-    <section class="ftco-section bg-light">
+    <section class="ftco-section bg-light" id="planes">
         <div class="container">
             <div class="row justify-content-center mb-5 pb-3">
                 <div class="col-md-7 heading-section ftco-animate text-center">
@@ -127,7 +79,7 @@
                             <div class="text-center">
                                 <h2 class="heading">{{ $plan->name }}</h2>
                                 <span class="price"><sup>$</sup> <span class="number">{{ $plan->price }}</span></span>
-                                <span class="excerpt d-block">por Mes</span>
+                                <span class="excerpt d-block">por Mes + Envío</span>
 
                                 <h3 class="heading-2 my-4">Disfruta de </h3>
 
@@ -137,7 +89,7 @@
                                     @endforeach
                                 </ul>
 
-                                <a href="#" class="btn btn-primary d-block px-2 py-3">Suscribirse</a>
+                                <a href="#" class="btn btn-primary d-block px-2 py-3 modal-opener" planId="{{ $plan->id }}">Suscribirse</a>
                             </div>
                         </div>
                     </div>
@@ -147,91 +99,100 @@
     </section>
     {{-- Fin Planes --}}
 
+    <div id="myModal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Estas por unirte a SERENO MORENO</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Modal body text goes here.</p>
+                    {{-- <form id="joinForm" method="POST" action="{{ route('subscribe') }}"> --}}
+                    <form id="joinForm" method="POST" action="{{ route('sendEmail') }}">
+                        @csrf
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Nombre:</label>
+                            <input required="required" type="text" class="form-control" name="name" placeholder="Nombre">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Apellidos:</label>
+                            <input required="required" type="text" class="form-control" name="last_name" placeholder="Apellidos">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Correo electrónico:</label>
+                            <input required="required" type="email" class="form-control" name="email" placeholder="Correo electrónico">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Fecha de nacimiento:</label>
+                            <input type="date" class="form-control" name="birthday" placeholder="07/07/07">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Teléfono:</label>
+                            <input required="required" type="number" class="form-control" name="phone" placeholder="Teléfono">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Modo de preparación:</label>
+                            <input required="required" type="text" class="form-control" name="grain_type" placeholder="Modo de preparación">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Dirección:</label>
+                            <input required="required" type="text" class="form-control" name="address" placeholder="Av. Siempre Viva 742">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Código Postal:</label>
+                            <input required="required" type="text" class="form-control" name="pc" placeholder="Código Postal">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Contraseña:</label>
+                            <input required="required" type="password" class="form-control" id="password" name="password" placeholder="Contraseña">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Confirmación de Contraseña:</label>
+                            <input required="required" equalTo="#password" type="password" class="form-control" name="password_confirmation" placeholder="Confirmación de Contraseña">
+                        </div>
+
+                        <input type="hidden" name="plan_id" id="plan_id" value="">
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="joinButton">Unirse</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     {{-- Nuestro Equipo --}}
     <section class="ftco-section">
         <div class="container">
             <div class="row justify-content-center mb-5 pb-3">
                 <div class="col-md-7 text-center heading-section ftco-animate">
-                    <h2 class="mb-4"><span>Nuestro</span> Equipo</h2>
+                    <h2 class="mb-4"><span>Conócenos</span></h2>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12 ftco-animate">
                     <div class="carousel-testimony owl-carousel">
-                        <div class="item">
-                            <div class="speaker">
-                                <img src="front_images/speaker-1.jpg" class="img-fluid" alt="Colorlib HTML5 Template">
-                                <div class="text text-center py-3">
-                                    <h3>John Adams</h3>
-                                    <span class="position">Web Developer</span>
-                                    <ul class="ftco-social mt-3">
+                        @foreach ($products as $key => $product)
+                            <div class="item">
+                                <div class="speaker">
+                                    <img class="img-fluid" alt="Colorlib HTML5 Template" src="{{ Storage::url(config('constants.base_image_path').$product->image) }}">
+                                    <div class="text text-center py-3">
+                                        <h3>{{ $product->title }}</h3>
+                                        <span class="position">{{ $product->description }}</span>
+                                        {{-- <ul class="ftco-social mt-3">
                                         <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
                                         <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
                                         <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-                                    </ul>
+                                    </ul> --}}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="speaker">
-                                <img src="front_images/speaker-2.jpg" class="img-fluid" alt="Colorlib HTML5 Template">
-                                <div class="text text-center py-3">
-                                    <h3>Paul George</h3>
-                                    <span class="position">Web Developer</span>
-                                    <ul class="ftco-social mt-3">
-                                        <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                                        <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                                        <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="speaker">
-                                <img src="front_images/speaker-3.jpg" class="img-fluid" alt="Colorlib HTML5 Template">
-                                <div class="text text-center py-3">
-                                    <h3>James Smith</h3>
-                                    <span class="position">Web Developer</span>
-                                    <ul class="ftco-social mt-3">
-                                        <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                                        <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                                        <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="speaker">
-                                <img src="front_images/speaker-4.jpg" class="img-fluid" alt="Colorlib HTML5 Template">
-                                <div class="text text-center py-3">
-                                    <h3>Angelie Crawford</h3>
-                                    <span class="position">Web Developer</span>
-                                    <ul class="ftco-social mt-3">
-                                        <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                                        <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                                        <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="speaker">
-                                <img src="front_images/speaker-5.jpg" class="img-fluid" alt="Colorlib HTML5 Template">
-                                <div class="text text-center py-3">
-                                    <h3>Jackie Spears</h3>
-                                    <span class="position">Entrepreneur</span>
-                                    <ul class="ftco-social mt-3">
-                                        <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                                        <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                                        <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -240,7 +201,7 @@
     {{-- Fin Nuestro Equipo --}}
 
     {{-- Blog --}}
-    <section class="ftco-section bg-light">
+    {{-- <section class="ftco-section bg-light">
         <div class="container">
             <div class="row justify-content-center mb-5 pb-3">
                 <div class="col-md-7 heading-section text-center ftco-animate">
@@ -307,7 +268,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     {{-- Fin Blog --}}
 
     {{-- Testimonios --}}
@@ -330,13 +291,27 @@
                                     </span>
                                 </div>
                                 <div class="text">
-                                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                    <p class="name">Roger Scott</p>
-                                    <span class="position">Marketing Manager</span>
+                                    <p class="mb-4">Enamorado del café, una experiencia maravillosa</p>
+                                    <p class="name">Pedro Sanchez</p>
+                                    <span class="position">Excelente</span>
                                 </div>
                             </div>
                         </div>
                         <div class="item">
+                            <div class="testimony-wrap text-center py-4 pb-5">
+                                <div class="user-img mb-4" style="background-image: url(front_images/person_3.jpg)">
+                                    <span class="quote d-flex align-items-center justify-content-center">
+                                        <i class="icon-quote-left"></i>
+                                    </span>
+                                </div>
+                                <div class="text">
+                                    <p class="mb-4">Uno de los mejores servicios que he contratado, 100% recomendado</p>
+                                    <p class="name">Mariano Rivera</p>
+                                    <span class="position">Una Maravilla</span>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- <div class="item">
                             <div class="testimony-wrap text-center py-4 pb-5">
                                 <div class="user-img mb-4" style="background-image: url(front_images/person_2.jpg)">
                                     <span class="quote d-flex align-items-center justify-content-center">
@@ -349,22 +324,8 @@
                                     <span class="position">Interface Designer</span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimony-wrap text-center py-4 pb-5">
-                                <div class="user-img mb-4" style="background-image: url(front_images/person_3.jpg)">
-                                    <span class="quote d-flex align-items-center justify-content-center">
-                                        <i class="icon-quote-left"></i>
-                                    </span>
-                                </div>
-                                <div class="text">
-                                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                    <p class="name">Roger Scott</p>
-                                    <span class="position">UI Designer</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
+                        </div> --}}
+                        {{-- <div class="item">
                             <div class="testimony-wrap text-center py-4 pb-5">
                                 <div class="user-img mb-4" style="background-image: url(front_images/person_1.jpg)">
                                     <span class="quote d-flex align-items-center justify-content-center">
@@ -391,7 +352,7 @@
                                     <span class="position">System Analyst</span>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -427,7 +388,7 @@
                             <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="day-1-tab">
                                 @foreach ($questions as $key => $question)
                                     <div class="speaker-wrap ftco-animate d-flex">
-                                        <div class="img speaker-img questions" style="background-color: #6b76ff">{!! $key + 1 !!}</div>
+                                        <div class="img speaker-img questions" style="background-color: #28818F">{!! $key + 1 !!}</div>
                                         <div class="text pl-md-5">
                                             {{-- <span class="time">08: - 10:00</span> --}}
                                             <h2>{!! $question->question !!}</h2>
@@ -469,8 +430,8 @@
                 <div class="col-md">
                     <div class="ftco-footer-widget mb-4">
                         <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-                            <li class="ftco-animate"><a href="https://www.facebook.com/serenomorenocafe" target="_blank"><span class="icon-facebook"></span></a></li>
-                            <li class="ftco-animate"><a href="https://www.instagram.com/serenomoreno_cafe" target="_blank"><span class="icon-instagram"></span></a></li>
+                            <li class="ftco-animate"><a href="https://www.facebook.com/serenomorenocafe" target="_blank"><span class="icon-facebook" style="color: white !important;"></span></a></li>
+                            <li class="ftco-animate"><a href="https://www.instagram.com/serenomoreno_cafe" target="_blank"><span class="icon-instagram" style="color: white !important;"></span></a></li>
                         </ul>
                     </div>
                 </div>
@@ -486,11 +447,11 @@
                 </div>
                 <div class="col-md">
                     <div class="ftco-footer-widget mb-4">
-                        <h2 class="ftco-heading-2" style="color: white !important;">¿Dudas?</h2>
+                        <h2 class="ftco-heading-2">¿Dudas?</h2>
                         <div class="block-23 mb-3">
                             <ul>
-                                <li><a href="callto:+34651438113"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
-                                <li><a href="mailto:serenomorenocafe@serenomorenocafe.com.mx"><span class="icon icon-envelope"></span><span class="text" style="text-transform: lowercase !important;">info@serenocafe.com.mx</span></a></li>
+                                <li><a href="https://wa.link/vvc3lj" target="_blank"><span class="icon icon-whatsapp"></span><span class="text">33 1828 0844</span></a></li>
+                                <li><a href="mailto:mailto:sereno.moreno.mex@gmail.com"><span class="icon icon-envelope"></span><span class="text" style="text-transform: lowercase !important;">sereno.moreno.mex@gmail.com</span></a></li>
                             </ul>
                         </div>
                     </div>
@@ -502,34 +463,41 @@
                     <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-                    </div>
                 </div>
             </div>
-        </footer>
+        </div>
+    </footer>
 
 
 
-        <!-- loader -->
-        <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen">
+        <svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg>
+    </div>
 
+    @endsection
+    @section('js')
 
-        <script src="{{ asset('front_js/jquery.min.js') }}"></script>
-        <script src="{{ asset('front_js/jquery-migrate-3.0.1.min.js') }}"></script>
-        <script src="{{ asset('front_js/popper.min.js') }}"></script>
-        <script src="{{ asset('front_js/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('front_js/jquery.easing.1.3.js') }}"></script>
-        <script src="{{ asset('front_js/jquery.waypoints.min.js') }}"></script>
-        <script src="{{ asset('front_js/jquery.stellar.min.js') }}"></script>
-        <script src="{{ asset('front_js/owl.carousel.min.js') }}"></script>
-        <script src="{{ asset('front_js/jquery.magnific-popup.min.js') }}"></script>
-        <script src="{{ asset('front_js/aos.js') }}"></script>
-        <script src="{{ asset('front_js/jquery.animateNumber.min.js') }}"></script>
-        <script src="{{ asset('front_js/bootstrap-datepicker.js') }}"></script>
-        <script src="{{ asset('front_js/jquery.timepicker.min.js') }}"></script>
-        <script src="{{ asset('front_js/scrollax.min.js') }}"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-        <script src="{{ asset('front_js/google-map.js') }}"></script>
-        <script src="{{ asset('front_js/main.js') }}"></script>
+    <script type="text/javascript">
+        mybutton = document.getElementById("myBtn");
 
-    </body>
-</html>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            mybutton.style.display = "block";
+        }
+
+        $(document).ready(function () {
+            $('#joinForm').validate();
+            $('#joinButton').click(function(e) {
+                $('#joinForm').submit();
+            });
+            $('.modal-opener').click(function (e) {
+                $('#myModal').modal('toggle');
+                $('#plan_id').val($(this).attr('planId'));
+                e.preventDefault();
+            });
+        });
+    </script>
+    @endsection

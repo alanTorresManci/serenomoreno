@@ -174,6 +174,8 @@ return [
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         \App\Providers\InstagramServiceProvider::class,
+        // Srmklive\PayPal\Providers\PayPalServiceProvider::class,
+        
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
@@ -228,6 +230,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        // 'PayPal' => Srmklive\PayPal\Facades\PayPal::class,
 
     ],
 

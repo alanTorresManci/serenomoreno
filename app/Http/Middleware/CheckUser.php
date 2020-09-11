@@ -15,7 +15,7 @@ class CheckUser
      */
     public function handle($request, Closure $next)
     {
-        if(!Auth::user()->hasRole('Client')) {
+        if(!\Auth::user()->hasRole('Client')) {
             return redirect('/');
         }
         return $next($request);

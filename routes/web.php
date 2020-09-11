@@ -12,10 +12,16 @@
 */
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::post('/subscribe', 'PaymentsController@subscribe')->name('subscribe');
+Route::post('/subscribe', 'PaymentsController@sendEmail')->name('sendEmail');
 
 Auth::routes();
 
 Route::group(['middleware' => ['auth']], function () {
+    Route::get('/logout', function(){
+        \Auth::logout();
+        return redirect()->route('home');
+    })->name('logout');
     //
     Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function () {
         // Route::get('/home', 'HomeController@index')->name('home');
@@ -24,8 +30,14 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('users', 'Admin\UsersController');
         Route::resource('questions', 'Admin\QuestionsController');
         Route::resource('texts', 'Admin\TextsController');
+        Route::resource('products', 'Admin\ProductsController');
     });
     Route::group(['middleware' => ['client']], function() {
-
+        Route::get('/payments/show', 'PaymentsController@show')->name('payments.show');
+        Route::get('/payments/pay', 'PayPalController@pay')->name('payments.pay');
+        Route::get('/payments/success', 'PayPalController@paypalReturn')->name('payments.success');
+        Route::get('/payments/cancel/{token}', 'PayPalController@cancel')->name('paypal.cancel');
+        Route::get('client/profile', 'ClientsController@show')->name('clients.profile');
+        Route::get('client/cancel', 'ClientsController@cancel')->name('clients.cancel');
     });
 });

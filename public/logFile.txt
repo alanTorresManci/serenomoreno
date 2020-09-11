@@ -1,0 +1,43 @@
+* Hostname api-demo.skydropx.com was found in DNS cache
+*   Trying 35.172.84.218...
+* TCP_NODELAY set
+* Connected to api-demo.skydropx.com (35.172.84.218) port 443 (#0)
+* ALPN, offering http/1.1
+* Cipher selection: ALL:!EXPORT:!EXPORT40:!EXPORT56:!aNULL:!LOW:!RC4:@STRENGTH
+* successfully set certificate verify locations:
+*   CAfile: /etc/ssl/cert.pem
+  CApath: none
+* SSL connection using TLSv1.2 / ECDHE-RSA-AES128-GCM-SHA256
+* ALPN, server accepted to use http/1.1
+* Server certificate:
+*  subject: CN=api-demo.skydropx.com
+*  start date: Sep  3 23:48:23 2020 GMT
+*  expire date: Dec  2 23:48:23 2020 GMT
+*  subjectAltName: host "api-demo.skydropx.com" matched cert's "api-demo.skydropx.com"
+*  issuer: C=US; O=Let's Encrypt; CN=Let's Encrypt Authority X3
+*  SSL certificate verify ok.
+> GET /v1/shipments HTTP/1.1
+Host: api-demo.skydropx.com
+Accept: */*
+Authorization: Token token=WMrwjXO4XVfNdqUq613eMJ5gPXjocUuOWzesEvu9RIYt
+Content-Type: application/json
+
+< HTTP/1.1 200 OK
+< Server: Cowboy
+< Date: Fri, 04 Sep 2020 17:08:06 GMT
+< Connection: keep-alive
+< Per-Page: 20
+< Page: 1
+< Total: 0
+< Content-Type: application/json; charset=utf-8
+< Set-Cookie: _session_id=OCs1MTJiVFdjMjhWRWZ2OXZ0Um5aQi8xVjE3bXlWcmFtVHVHZ01UcHQ3SlVSdHVxR2JFbDcwTlZSYUlEb2E0b3JoYWcvZ2wwdWJSOElQR3FTRU5Pa0E9PS0tQWdSSmI4YitUTFJHTzBJYmlIbDZkQT09--8aa66f15df652aae076963f88c033b84a72af338; path=/; secure; HttpOnly
+< Set-Cookie: _session_id=d2pOYTVwY0ZlaHVSVkFhbjBtaGkvbmZBL2hYeXh2U0xudGhuV2RNdjdJdTh2MkFEM1FJalpobzFwOFJWUFpkaDFySm1FNjhsNkcxTUc0WDZMV1haOFE9PS0tOFhocVRLRXRWbUs0YVhEZ1BhRVpVQT09--caa61678fd9eca691012e491b1aee573f4452570; path=/; secure; HttpOnly
+< Etag: W/"ab69fdfec6429447509706026b94e532"
+< Cache-Control: max-age=0, private, must-revalidate
+< X-Request-Id: 82606805-2631-4305-9bb6-d08e51dfc87b
+< X-Runtime: 0.249138
+< Strict-Transport-Security: max-age=15552000; includeSubDomains
+< Transfer-Encoding: chunked
+< Via: 1.1 vegur
+< 
+* Connection #0 to host api-demo.skydropx.com left intact
